@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
-import DashboardLayout from "./components/DashboardLayout";
+import Layout from "./components/Layout";
 
 function App() {
   return (
@@ -11,14 +11,15 @@ function App() {
         <Route path="/login" element={<Login />} />
 
         <Route
+          path="/"
           element={
             <ProtectedRoute>
-              <DashboardLayout />
+              <Layout>
+                <Dashboard />
+              </Layout>
             </ProtectedRoute>
           }
-        >
-          <Route path="/" element={<Dashboard />} />
-        </Route>
+        />
       </Routes>
     </BrowserRouter>
   );
